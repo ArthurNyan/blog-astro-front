@@ -1,7 +1,7 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 ---
 
@@ -11,39 +11,45 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+		<Header pathname={Astro.url.pathname} client:load />
+		<main class="max-w-3xl mx-auto px-4 py-12">
+			<div class="space-y-6">
+				<h1 class="text-4xl md:text-5xl font-bold text-foreground">
+					🧑‍🚀 Hello, Astronaut!
+				</h1>
+				<p class="text-lg text-muted-foreground leading-relaxed">
+					Welcome to the official <a href="https://astro.build/" class="text-primary hover:underline">Astro</a> blog starter template. This template
+					serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
+					website, blog, or portfolio with Astro.
+				</p>
+				<p class="text-lg text-muted-foreground leading-relaxed">
+					This template comes with a few integrations already configured in your
+					<code class="px-2 py-1 bg-muted rounded text-sm">astro.config.mjs</code> file. You can customize your setup with
+					<a href="https://astro.build/integrations" class="text-primary hover:underline">Astro Integrations</a> to add tools like Tailwind,
+					React, or Vue to your project.
+				</p>
+				<p class="text-lg text-muted-foreground leading-relaxed">
+					Here are a few ideas on how to get started with the template:
+				</p>
+				<ul class="list-disc list-inside space-y-2 text-lg text-muted-foreground ml-4">
+					<li>Edit this page in <code class="px-2 py-1 bg-muted rounded text-sm">src/pages/index.astro</code></li>
+					<li>Edit the site header items in <code class="px-2 py-1 bg-muted rounded text-sm">src/components/Header.tsx</code></li>
+					<li>Add your name to the footer in <code class="px-2 py-1 bg-muted rounded text-sm">src/components/Footer.tsx</code></li>
+					<li>Check out the included blog posts in <code class="px-2 py-1 bg-muted rounded text-sm">src/content/blog/</code></li>
+					<li>Customize the blog post page layout in <code class="px-2 py-1 bg-muted rounded text-sm">src/layouts/BlogPost.astro</code></li>
+				</ul>
+				<p class="text-lg text-muted-foreground leading-relaxed">
+					Have fun! If you get stuck, remember to
+					<a href="https://docs.astro.build/" class="text-primary hover:underline">read the docs</a>
+					or <a href="https://astro.build/chat" class="text-primary hover:underline">join us on Discord</a> to ask questions.
+				</p>
+				<p class="text-lg text-muted-foreground leading-relaxed">
+					Looking for a blog template with a bit more personality? Check out
+					<a href="https://github.com/Charca/astro-blog-template" class="text-primary hover:underline">astro-blog-template</a>
+					by <a href="https://twitter.com/Charca" class="text-primary hover:underline">Maxi Ferreira</a>.
+				</p>
+			</div>
 		</main>
-		<Footer />
+		<Footer client:load />
 	</body>
 </html>
