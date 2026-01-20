@@ -1,9 +1,7 @@
 ---
-import { Button } from "@/shared/components/ui/button";
+// import { Button } from "@/shared/components/ui/button";
 import "@/shared/styles/__global.css";
-// Component Imports
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+import { PixelBlast } from "@/shared/components/PixelBlast/PixelBlast";
 ---
 
 <html lang="en">
@@ -15,12 +13,28 @@ import "@/shared/styles/__global.css";
 		<title>Astro + TailwindCSS</title>
 	</head>
 
-	<body>
-		<div class="grid place-items-center h-screen content-center">
-			<Button>Button</Button>
-			<a href="/markdown-page" class="p-4 underline"
-				>Markdown is also supported...</a
-			>
+	<body class="dark">
+		<div class="w-full h-full relative">
+			<PixelBlast
+				variant="square"
+				pixelSize={4}
+				color="#B19EEF"
+				patternScale={2}
+				patternDensity={1}
+				pixelSizeJitter={0}
+				enableRipples
+				rippleSpeed={0.4}
+				rippleThickness={0.12}
+				rippleIntensityScale={1.5}
+				liquid={false}
+				liquidStrength={0.12}
+				liquidRadius={1.2}
+				liquidWobbleSpeed={5}
+				speed={0.5}
+				edgeFade={0.25}
+				transparent
+				client:load
+			/>
 		</div>
 	</body>
 </html>
