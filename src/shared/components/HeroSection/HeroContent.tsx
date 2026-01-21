@@ -47,7 +47,7 @@ export default function HeroContent() {
                     delay={100}
                     animateBy="words"
                     direction="bottom"
-                    className="text-2xl text-center text-gray-400"
+                    className="text-2xl text-center text-neutral-400"
                 />
                 <motion.div
                     initial={{ opacity: 0, y: 32 }}
