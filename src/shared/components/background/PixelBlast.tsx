@@ -691,7 +691,7 @@ export const PixelBlast: React.FC<PixelBlastProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`pixel-blast-container ${className ?? ''}`}
+      className={`pixel-blast-container ${className ?? ''} w-full min-h-screen`}
       style={style}
       aria-label="PixelBlast interactive background"
     />
