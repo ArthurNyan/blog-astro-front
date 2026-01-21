@@ -33,31 +33,8 @@ export interface NavigationItem {
 }
 
 /**
- * Пример структуры данных для Strapi:
- * 
- * {
- *   "navigation": [
- *     {
- *       "label": "Getting Started",
- *       "submenu": {
- *         "featured": {
- *           "title": "shadcn/ui",
- *           "href": "/",
- *           "description": "Beautifully designed components"
- *         },
- *         "items": [
- *           {
- *             "title": "Introduction",
- *             "href": "/docs",
- *             "description": "Re-usable components"
- *           }
- *         ]
- *       }
- *     },
- *     {
- *       "label": "Documentation",
- *       "href": "/docs"
- *     }
- *   ]
- * }
+ * Пропсы для Header компонента
  */
+export interface HeaderProps {
+	navigationItems?: NavigationItem[];
+}

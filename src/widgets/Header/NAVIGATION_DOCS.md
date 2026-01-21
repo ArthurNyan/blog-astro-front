@@ -1,5 +1,15 @@
 # Документация по навигации Header
 
+> **Примечание**: Header реорганизован согласно FSD архитектуре.  
+> См. [FSD_ARCHITECTURE.md](../../../FSD_ARCHITECTURE.md) для деталей.
+
+## Использование
+
+```tsx
+import { Header } from '@/widgets/Header';
+import type { HeaderProps, NavigationItem } from '@/widgets/Header';
+```
+
 ## Структура данных для Strapi
 
 Header компонент поддерживает динамическую навигацию с двумя типами пунктов меню:
