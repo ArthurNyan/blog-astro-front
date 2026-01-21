@@ -1,6 +1,7 @@
 import React from 'react';
 import { buttonVariants } from '@/shared/components/ui/button';
 import type { NavigationItem } from '../model';
+import { MobileNavItem } from './MobileNavItem';
 
 interface MobileNavProps {
 	items: NavigationItem[];
@@ -8,54 +9,21 @@ interface MobileNavProps {
 
 export const MobileNav = ({ items }: MobileNavProps) => {
 	return (
-		<div className="grid gap-y-2">
+		<div className="grid gap-y-2 overflow-y-auto overflow-x-hidden">
 			{items.map((item, index) => (
 				<React.Fragment key={index}>
 					{item.submenu ? (
 						<div className="space-y-2">
 							<div className="px-4 py-2 text-sm font-semibold">{item.label}</div>
 							{item.submenu.featured && (
-								<a
-									className={buttonVariants({
-										variant: 'ghost',
-										className: 'justify-start flex-col items-start h-auto py-3',
-									})}
-									href={item.submenu.featured.href}
-								>
-									<span className="font-medium">{item.submenu.featured.title}</span>
-									{item.submenu.featured.description && (
-										<span className="text-xs text-muted-foreground">
-											{item.submenu.featured.description}
-										</span>
-									)}
-								</a>
+								<MobileNavItem item={item.submenu.featured} />
 							)}
 							{item.submenu.items.map((subItem, subIndex) => (
-								<a
-									key={subIndex}
-									className={buttonVariants({
-										variant: 'ghost',
-										className: 'justify-start flex-col items-start h-auto py-3',
-									})}
-									href={subItem.href}
-								>
-									<span className="font-medium">{subItem.title}</span>
-									{subItem.description && (
-										<span className="text-xs text-muted-foreground">{subItem.description}</span>
-									)}
-								</a>
+								<MobileNavItem item={subItem} key={subIndex} />
 							))}
 						</div>
 					) : (
-						<a
-							className={buttonVariants({
-								variant: 'ghost',
-								className: 'justify-start',
-							})}
-							href={item.href}
-						>
-							{item.label}
-						</a>
+						<MobileNavItem item={{ href: item.href || '#', title: item.label }} />
 					)}
 				</React.Fragment>
 			))}
