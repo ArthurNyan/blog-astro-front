@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
-import { PixelBlast } from "../background/PixelBlast";
-import { Button } from "../ui/button";
-import { BlurText } from "../BlurText";
+import { PixelBlast } from "@/shared/components/background/PixelBlast";
+import { Button } from "@/shared/components/ui/button";
+import { BlurText } from "@/shared/components/BlurText";
 
 export default function HeroContent() {
     return (
