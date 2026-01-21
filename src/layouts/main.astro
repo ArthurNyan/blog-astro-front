@@ -1,5 +1,6 @@
 ---
-import '../styles/global.css';
+import "@/shared/styles/__global.css";
+import { Header } from '@/shared/components/ui/header';
 const { content } = Astro.props;
 ---
 
@@ -10,7 +11,10 @@ const { content } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{content.title}</title>
 	</head>
-	<body>
-		<slot />
+	<body class="dark min-h-screen">
+		<div class="w-full h-full relative">
+			<Header client:load />
+			<slot />
+		</div>
 	</body>
 </html>
