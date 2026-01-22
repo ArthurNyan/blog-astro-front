@@ -4,6 +4,7 @@ import { FeatureTabs } from "@/widgets/FeatureTabs";
 import { BentoGridWidget } from "@/widgets/BentoGrid";
 import HeroSection from "@/widgets/HeroSection/HeroSection.astro";
 // import { TimelinePanel } from "@/widgets/TimelinePanel";
+import { FeatureHighlighter } from "@/widgets/FeatureHighlighter";
 ---
 
 <MainLayout content={{ title: "Astro + TailwindCSS" }}>
@@ -11,4 +12,5 @@ import HeroSection from "@/widgets/HeroSection/HeroSection.astro";
 	<FeatureTabs client:idle />
 	<!-- <TimelinePanel client:idle /> -->
 	<BentoGridWidget client:idle />
+	<FeatureHighlighter client:idle />
 </MainLayout>
