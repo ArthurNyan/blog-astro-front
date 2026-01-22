@@ -692,7 +692,7 @@ export const PixelBlast: React.FC<PixelBlastProps> = ({
       ref={containerRef}
       className={` ${className ?? ''} w-full min-h-screen`}
       style={style}
-      aria-label="PixelBlast interactive background"
+      aria-label="background"
     />
   );
 };
