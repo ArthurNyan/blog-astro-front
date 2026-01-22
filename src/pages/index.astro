@@ -1,9 +1,12 @@
 ---
 import MainLayout from "@/layouts/main.astro";
+import { BentoGrid, itemsSample } from "@/shared/components/ui/bento-grid";
 import HeroSection from "@/widgets/HeroSection/HeroSection.astro";
 ---
 
 <MainLayout content={{ title: "Astro + TailwindCSS" }}>
 	<HeroSection />
-	<div class="min-h-screen">
+
+	<div class="min-h-screen"></div>
+	<BentoGrid items={itemsSample} />
 </MainLayout>
