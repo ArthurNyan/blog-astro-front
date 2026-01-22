@@ -19,7 +19,7 @@ function BentoGrid({ children, className }: BentoGridProps) {
                 stiffness: 100,
             }}
             className={cn(
-                "grid grid-cols-1 md:grid-cols-3 gap-3 p-4 max-w-7xl mx-auto",
+                "grid grid-cols-1 md:grid-cols-3 gap-3 max-w-7xl mx-auto",
                 className
             )}
         >
