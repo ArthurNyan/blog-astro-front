@@ -1,7 +1,7 @@
 import { Button, buttonVariants } from "@/shared/components/ui/button";
 import { HighlighterItem, HighlightGroup, Particles } from "@/shared/components/ui/highlighter";
 import { cn } from "@/shared/lib/utils";
-import { Mail, MessageCircle, PenTool } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
 import { useAnimate } from "motion/react";
 import { useEffect } from "react";
 
@@ -69,7 +69,8 @@ export function FeatureHighlighter() {
                                         className="relative mx-auto h-[270px] w-[300px] md:h-[270px] md:w-[300px]"
                                         ref={scope}
                                     >
-                                        <PenTool className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2" />
+                                        {/* LOGO IMAGE */}
+                                        {/* <PenTool className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2" /> */}
                                         <div
                                             id="next-js"
                                             className="absolute bottom-12 left-14 rounded-3xl border border-slate-400 bg-slate-200 px-2 py-1.5 text-xs opacity-50 dark:border-slate-600 dark:bg-slate-800"
