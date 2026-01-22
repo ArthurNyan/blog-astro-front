@@ -12,7 +12,7 @@ export const MobileNavItem = ({ item }: { item: NavigationLinkItem }) => {
 		>
 			<span className="font-medium">{item.title}</span>
 			{item.description && (
-				<span className="text-xs text-muted-foreground">
+				<span className="text-xs text-muted-foreground whitespace-normal">
 					{item.description}
 				</span>
 			)}
