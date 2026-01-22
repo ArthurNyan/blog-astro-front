@@ -29,9 +29,9 @@ export const Header = ({ navigationItems }: HeaderProps) => {
 	return (
 		<header
 			className={cn(
-				'sticky top-0 z-50 mx-auto w-full max-w-6xl border-b border-transparent md:rounded-md md:border md:transition-all md:ease-out mt-4',
+				'sticky top-0 z-50 container mx-auto border-b border-transparent md:rounded-md md:border md:transition-all md:ease-out mt-4',
 				{
-					'bg-background/95 supports-backdrop-filter:bg-background/30 border-border backdrop-blur-lg md:top-4 md:max-w-6xl md:shadow':
+					'bg-background/95 supports-backdrop-filter:bg-background/30 border-border backdrop-blur-lg md:top-4 md:container md:shadow':
 						scrolled && !open,
 					'bg-background/90': open,
 				},

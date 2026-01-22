@@ -15,8 +15,8 @@ const { content } = Astro.props;
 		<link rel="preload" href={stylesUrl} as="style" />
 		<title>{content.title}</title>
 	</head>
-	<body class="dark min-h-screen">
-		<div class="w-full h-full relative">
+	<body class="dark">
+		<div class="w-full min-h-screen">
 			<Header client:load />
 			<slot />
 			<Footer client:visible />
