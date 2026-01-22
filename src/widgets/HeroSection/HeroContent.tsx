@@ -38,9 +38,9 @@ export default function HeroContent() {
             <motion.div
                 className="absolute inset-0 flex flex-col items-center justify-center gap-8 max-w-3xl mx-auto mb-4"
                 style={{ zIndex: 10 }}
-                initial={{ opacity: 0, y: 32 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.3, ease: "easeOut" }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.5 }}
+                transition={{ duration: 0.3, delay: 1.5, ease: "easeOut" }}
             >
                 <h1 className="text-6xl font-bold text-center">
                     Commercial Astro <br /> Template
