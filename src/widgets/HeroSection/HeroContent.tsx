@@ -52,6 +52,7 @@ export default function HeroContent() {
                     animateBy="words"
                     direction="bottom"
                     className="text-2xl text-center text-neutral-400"
+                    stepDuration={0.2}
                 />
                 <motion.div
                     initial={{ opacity: 0, y: 32 }}
