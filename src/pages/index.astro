@@ -1,12 +1,12 @@
 ---
 import MainLayout from "@/layouts/main.astro";
 import { FeatureTabs } from "@/widgets/FeatureTabs";
-import { BentoGrid, itemsSample } from "@/shared/components/ui/bento-grid";
+import { BentoGridWidget } from "@/widgets/BentoGrid";
 import HeroSection from "@/widgets/HeroSection/HeroSection.astro";
 ---
 
 <MainLayout content={{ title: "Astro + TailwindCSS" }}>
 	<HeroSection />
 	<FeatureTabs client:idle />
-	<BentoGrid items={itemsSample} />
+	<BentoGridWidget client:idle />
 </MainLayout>
