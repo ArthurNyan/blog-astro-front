@@ -3,10 +3,12 @@ import MainLayout from "@/layouts/main.astro";
 import { FeatureTabs } from "@/widgets/FeatureTabs";
 import { BentoGridWidget } from "@/widgets/BentoGrid";
 import HeroSection from "@/widgets/HeroSection/HeroSection.astro";
+// import { TimelinePanel } from "@/widgets/TimelinePanel";
 ---
 
 <MainLayout content={{ title: "Astro + TailwindCSS" }}>
 	<HeroSection />
 	<FeatureTabs client:idle />
+	<!-- <TimelinePanel client:idle /> -->
 	<BentoGridWidget client:idle />
 </MainLayout>
