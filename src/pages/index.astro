@@ -6,16 +6,18 @@ import HeroSection from "@/widgets/HeroSection/HeroSection.astro";
 // import { TimelinePanel } from "@/widgets/TimelinePanel";
 import { FeatureHighlighter } from "@/widgets/FeatureHighlighter";
 import { TestimonialsPanel } from "@/widgets/TestimonialsPanel";
+import { LogoPanel } from "@/widgets/LogoPanel/ui/LogoPanel";
 ---
 
 <MainLayout
 	content={{ title: "Astro + TailwindCSS" }}
-	className="flex flex-col gap-20"
+	className="flex flex-col gap-32"
 >
 	<HeroSection />
 	<FeatureTabs client:idle />
 	<!-- <TimelinePanel client:idle /> -->
 	<TestimonialsPanel client:idle />
+	<LogoPanel client:visible />
 	<BentoGridWidget client:visible />
 	<FeatureHighlighter client:visible />
 </MainLayout>
