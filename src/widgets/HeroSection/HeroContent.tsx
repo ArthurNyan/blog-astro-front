@@ -1,36 +1,40 @@
 import { motion } from "motion/react";
-import { PixelBlast } from "@/shared/components/background/PixelBlast";
 import { Button } from "@/shared/components/ui/button";
 import { BlurText } from "@/shared/components/BlurText";
+import { Suspense, lazy } from "react";
+
+const PixelBlast = lazy(() => import("@/shared/components/background/PixelBlast").then(module => ({ default: module.PixelBlast })));
 
 export default function HeroContent() {
     return (
         <>
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, ease: "easeOut" }}
-            >
-                <PixelBlast
-                    variant="square"
-                    pixelSize={4}
-                    color="#42b860"
-                    patternScale={3.25}
-                    patternDensity={0.7}
-                    pixelSizeJitter={0}
-                    enableRipples
-                    rippleSpeed={0.4}
-                    rippleThickness={0.12}
-                    rippleIntensityScale={1.5}
-                    liquid={false}
-                    liquidStrength={0.12}
-                    liquidRadius={1.2}
-                    liquidWobbleSpeed={5}
-                    speed={0.5}
-                    edgeFade={0.25}
-                    transparent
-                />
-            </motion.div>
+            <Suspense>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1, ease: "easeOut" }}
+                >
+                    <PixelBlast
+                        variant="square"
+                        pixelSize={4}
+                        color="#42b860"
+                        patternScale={3.25}
+                        patternDensity={0.7}
+                        pixelSizeJitter={0}
+                        enableRipples
+                        rippleSpeed={0.4}
+                        rippleThickness={0.12}
+                        rippleIntensityScale={1.5}
+                        liquid={false}
+                        liquidStrength={0.12}
+                        liquidRadius={1.2}
+                        liquidWobbleSpeed={5}
+                        speed={0.5}
+                        edgeFade={0.25}
+                        transparent
+                    />
+                </motion.div>
+            </Suspense>
             <motion.div
                 className="absolute inset-0 flex flex-col items-center justify-center gap-8 max-w-3xl mx-auto mb-4"
                 style={{ zIndex: 10 }}
