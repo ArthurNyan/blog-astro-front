@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { EffectComposer, EffectPass, RenderPass, Effect } from 'postprocessing';
-import './PixelBlast.css';
 
 type PixelBlastVariant = 'square' | 'circle' | 'triangle' | 'diamond';
 
@@ -691,7 +690,7 @@ export const PixelBlast: React.FC<PixelBlastProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`pixel-blast-container ${className ?? ''} w-full min-h-screen`}
+      className={` ${className ?? ''} w-full min-h-screen`}
       style={style}
       aria-label="PixelBlast interactive background"
     />
