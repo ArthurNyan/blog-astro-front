@@ -8,13 +8,12 @@ export const LogoPanel = () => {
             <div
                 aria-hidden="true"
                 className={cn(
-                    "-z-10 -top-1/2 -translate-x-1/2 pointer-events-none absolute left-1/2 h-[120vmin] w-[120vmin] rounded-b-full",
+                    "-z-10 -top-1/2 -translate-x-1/2 pointer-events-none absolute left-1/2 w-full h-full rounded-b-full",
                     "bg-[radial-gradient(ellipse_at_center,--theme(--color-foreground/.1),transparent_50%)]",
                     "blur-[30px]"
                 )}
             />
-
-            <section className="relative mx-auto max-w-3xl">
+            <section className="relative mx-auto max-w-6xl">
                 <h2 className="mb-5 text-center font-medium text-foreground text-xl tracking-tight md:text-3xl">
                     <span className="text-muted-foreground">Trusted by experts.</span>
                     <br />
