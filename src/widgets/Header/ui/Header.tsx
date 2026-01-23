@@ -38,9 +38,9 @@ export const Header = ({ navigationItems }: HeaderProps) => {
 				{
 					'bg-background/95 supports-backdrop-filter:bg-background/30 border-border backdrop-blur-lg md:top-4 md:container md:shadow':
 					scrolled && !open,
-					'bg-background': open,
+					'bg-background mt-0 ': open,
 					'-translate-y-full': !isVisible && !open && !isHovered,
-					'translate-y-0': isVisible || open || isHovered,
+					// 'translate-y-0': isVisible || open || isHovered,
 				},
 				// transperent hover area for sticky effect
 				'before:absolute before:-top-5 before:-left-5 before:right-5 before:-bottom-5 before:z-[-1] before:content-[""]',
