@@ -3,6 +3,7 @@ import { Button } from '@/shared/components/ui/button';
 import { cn } from '@/shared/lib/utils';
 import { MenuToggleIcon } from '@/shared/components/ui/menu-toggle-icon';
 import { useScroll } from '@/shared/hooks/use-scroll';
+import { useScrollDirection } from '@/shared/hooks/use-scroll-direction';
 import type { HeaderProps } from '../model';
 import { DEFAULT_NAVIGATION } from '../model';
 import { DesktopNav } from './DesktopNav';
@@ -10,7 +11,9 @@ import { MobileNav } from './MobileNav';
 
 export const Header = ({ navigationItems }: HeaderProps) => {
 	const [open, setOpen] = React.useState(false);
+	const [isHovered, setIsHovered] = React.useState(false);
 	const scrolled = useScroll(10);
+	const { isVisible } = useScrollDirection(50);
 
 	const navigation = navigationItems || DEFAULT_NAVIGATION;
 
@@ -28,13 +31,19 @@ export const Header = ({ navigationItems }: HeaderProps) => {
 
 	return (
 		<header
+			onMouseEnter={() => setIsHovered(true)}
+			onMouseLeave={() => setIsHovered(false)}
 			className={cn(
-				'sticky top-0 z-50 container mx-auto border-b border-transparent md:rounded-md md:border md:transition-all md:ease-out mt-4',
+				'sticky top-0 z-50 container mx-auto border-b border-transparent md:rounded-md md:border transition-all duration-300 ease-out mt-4',
 				{
 					'bg-background/95 supports-backdrop-filter:bg-background/30 border-border backdrop-blur-lg md:top-4 md:container md:shadow':
-						scrolled && !open,
+					scrolled && !open,
 					'bg-background/90': open,
+					'-translate-y-full': !isVisible && !open && !isHovered,
+					'translate-y-0': isVisible || open || isHovered,
 				},
+				// transperent hover area for sticky effect
+				'before:absolute before:-top-5 before:-left-5 before:right-5 before:-bottom-5 before:z-[-1] before:content-[""]',
 			)}
 		>
 			<nav
@@ -46,7 +55,7 @@ export const Header = ({ navigationItems }: HeaderProps) => {
 				)}
 			>
 				<h4 className="text-xl font-bold">Logo</h4>
-				
+
 				<div className="hidden items-center gap-2 md:flex">
 					<DesktopNav items={navigation} />
 					<Button variant="outline">Sign In</Button>
