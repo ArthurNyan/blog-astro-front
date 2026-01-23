@@ -38,7 +38,7 @@ export const Header = ({ navigationItems }: HeaderProps) => {
 				{
 					'bg-background/95 supports-backdrop-filter:bg-background/30 border-border backdrop-blur-lg md:top-4 md:container md:shadow':
 					scrolled && !open,
-					'bg-background/90': open,
+					'bg-background': open,
 					'-translate-y-full': !isVisible && !open && !isHovered,
 					'translate-y-0': isVisible || open || isHovered,
 				},
@@ -70,7 +70,7 @@ export const Header = ({ navigationItems }: HeaderProps) => {
 			{/* Mobile Menu */}
 			<div
 				className={cn(
-					'bg-background fixed top-20 right-0 bottom-0 left-0 z-50 flex flex-col overflow-hidden border-y md:hidden',
+					'bg-background fixed top-14 right-0 bottom-0 left-0 z-50 flex flex-col overflow-hidden border-y md:hidden',
 					open ? 'block' : 'hidden',
 				)}
 			>
