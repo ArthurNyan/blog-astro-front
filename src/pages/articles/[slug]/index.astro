@@ -1,0 +1,71 @@
+---
+import MainLayout from "@/layouts/main.astro";
+import { getArticles, getArticleById } from "@/entity/Article";
+import type { Article } from "@/shared/api/types";
+
+export const getStaticPaths = async () => {
+    const response = await getArticles({ populate: '*' });
+    const articles = (response.data || []) as Article[];
+
+    return articles.map((article) => ({
+        params: { slug: article.slug || '' },
+        props: { articleId: article.id },
+    }));
+};
+
+const { slug } = Astro.params;
+const { articleId } = Astro.props;
+
+// Получаем полные данные статьи
+const articleResponse = await getArticleById(articleId as number);
+const article = articleResponse.data as Article | undefined;
+---
+
+<MainLayout
+    content={{ title: article?.name || 'Статья' }}
+    className="flex flex-col gap-32"
+>
+    <article class="container mx-auto px-4 py-8 max-w-4xl">
+        {article ? (
+            <>
+                <header class="mb-8">
+                    <h1 class="text-4xl font-bold mb-4">{article.name}</h1>
+                    
+                    {article.description && (
+                        <p class="text-xl text-gray-600 mb-4">{article.description}</p>
+                    )}
+                    
+                    <div class="flex gap-4 text-sm text-gray-500">
+                        {article.createdAt && (
+                            <time>
+                                Опубликовано: {new Date(article.createdAt).toLocaleDateString('ru-RU', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric'
+                                })}
+                            </time>
+                        )}
+                        {article.authors && article.authors.length > 0 && article.authors[0]?.name && (
+                            <span>Автор: {article.authors[0].name}</span>
+                        )}
+                    </div>
+                </header>
+
+                {article.cover?.url && (
+                    <img 
+                        src={`http://localhost:1337${article.cover.url}`}
+                        alt={article.name || ''}
+                        class="w-full rounded-lg mb-8"
+                    />
+                )}
+
+                <div class="prose prose-lg max-w-none">
+                    {article.content}
+                </div>
+            </>
+        ) : (
+            <p class="text-center text-gray-600">Статья не найдена</p>
+        )}
+    </article>
+</MainLayout>
+

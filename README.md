@@ -1,13 +1,113 @@
-# Astro with Tailwind
+# Blog Astro Front
 
-```sh
-pnpm create astro@latest -- --template with-tailwindcss
+Современный блог и портфолио на Astro с автоматической генерацией типов из OpenAPI.
+
+## Технологии
+
+- **Astro 5** - Фреймворк для создания статических сайтов
+- **React 19** - UI компоненты
+- **TailwindCSS 4** - Стилизация
+- **TypeScript** - Типизация
+- **Axios** - HTTP клиент
+- **OpenAPI TypeScript** - Автоматическая генерация типов и API клиента
+
+## Структура проекта
+
+```
+├── src/
+│   ├── entity/          # Бизнес-логика
+│   │   └── Article/     # Сущность Article
+│   ├── layouts/         # Макеты страниц
+│   ├── pages/           # Страницы приложения
+│   │   ├── articles/    # Страницы блога
+│   │   └── projects/    # Страницы проектов
+│   ├── shared/          # Общие компоненты и утилиты
+│   │   ├── api/         # API клиент и типы
+│   │   ├── components/  # Переиспользуемые компоненты
+│   │   └── hooks/       # React хуки
+│   └── widgets/         # Сложные UI виджеты
+├── public/              # Статические файлы
+└── openapi.json        # OpenAPI спецификация (генерируется)
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/with-tailwindcss)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/with-tailwindcss)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/with-tailwindcss/devcontainer.json)
+## Установка
 
-Astro comes with [Tailwind](https://tailwindcss.com) support out of the box. This example showcases how to style your Astro project with Tailwind.
+```bash
+# Установка зависимостей
+pnpm install
 
-For complete setup instructions, please see our [Tailwind Styling Guide](https://docs.astro.build/en/guides/styling/#tailwind).
+# Генерация API клиента
+pnpm run generate:api
+
+# Запуск dev сервера
+pnpm run dev
+
+# Сборка для production
+pnpm run build
+```
+
+## API Генерация
+
+Проект использует автоматическую генерацию типов и API клиента из OpenAPI спецификации Strapi.
+
+### Команды
+
+```bash
+# Полная генерация (скачивание спецификации + генерация типов и сервисов)
+pnpm run generate:api
+
+# Только скачивание OpenAPI спецификации
+pnpm run generate:api:download
+```
+
+Подробнее см. [API_GENERATOR.md](./API_GENERATOR.md)
+
+## Использование API
+
+```typescript
+import { ArticleService, ProjectService } from '@/shared/api/client';
+
+// Получение списка статей
+const articles = await ArticleService.getArticles({
+  populate: '*',
+  sort: 'createdAt:desc',
+  paginationPage: 1,
+  paginationPageSize: 10,
+});
+
+// Получение статьи по ID
+const article = await ArticleService.getArticlesId({ id: 1 });
+
+// Получение проектов
+const projects = await ProjectService.getProjects({ populate: '*' });
+```
+
+## Разработка
+
+```bash
+# Запуск dev сервера
+pnpm run dev
+
+# Сборка
+pnpm run build
+
+# Предпросмотр production сборки
+pnpm run preview
+```
+
+## Линзирование и форматирование
+
+Проект использует ESLint конфигурацию Astro.
+
+## Переменные окружения
+
+Создайте файл `.env` в корне проекта:
+
+```env
+# API URL
+PUBLIC_API_URL=http://localhost:1337/api
+```
+
+## Лицензия
+
+MIT

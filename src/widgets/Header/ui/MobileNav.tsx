@@ -39,7 +39,7 @@ export const MobileNav = ({ items }: MobileNavProps) => {
 								/>
 							</button>
 							<div
-								className={`overflow-hidden transition-all duration-300 ease-in-out ${openItems.has(index) ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+								className={`overflow-hidden transition-all duration-300 ease-in-out ${openItems.has(index) ? 'max-h-[2000px]' : 'max-h-0'
 									}`}
 							>
 								<div className="flex flex-col gap-1 pl-2 pt-1 pb-2">
