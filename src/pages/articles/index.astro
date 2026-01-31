@@ -9,7 +9,7 @@ const articlesResponse = await ArticleService.getArticles({
     sort: 'createdAt:desc',
 });
 
-const articles = (articlesResponse.data || []) as Article[];
+const articles = (articlesResponse.data?.data || []) as Article[];
 ---
 
 <MainLayout

@@ -26,4 +26,4 @@ pnpm-debug.log*
 
 # OpenAPI
 openapi.json
-src/shared/api/generated/
+src/shared/api/generated/types.ts

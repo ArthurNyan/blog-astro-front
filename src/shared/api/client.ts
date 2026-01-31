@@ -1,16 +1,18 @@
-import { OpenAPI } from './generated';
+// Конфигурация API клиента
+export { apiInstance } from './instance';
 
-// Конфигурация OpenAPI клиента
-OpenAPI.BASE = 'http://localhost:1337/api';
-OpenAPI.WITH_CREDENTIALS = false;
+// Экспорт типов из OpenAPI
+export type * from './generated/types';
 
-// TODO: Добавить обработку токенов при необходимости
-// OpenAPI.TOKEN = () => localStorage.getItem('token') || '';
+// Экспорт сервисов
+export { 
+  ArticleService, 
+  ProjectService, 
+  AuthorService, 
+  GlobalService, 
+  HomePageService,
+  api 
+} from './generated/services';
 
-export { OpenAPI };
-
-// Экспорт всех сервисов
-export * from './generated';
-
-// Экспорт расширенных типов
-export * from './types';
+// Экспорт кастомных типов
+export type * from './types';

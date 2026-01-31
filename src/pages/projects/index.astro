@@ -9,7 +9,7 @@ const projectsResponse = await ProjectService.getProjects({
     sort: 'createdAt:desc',
 });
 
-const projects = (projectsResponse.data || []) as Project[];
+const projects = (projectsResponse.data?.data || []) as Project[];
 ---
 
 <MainLayout

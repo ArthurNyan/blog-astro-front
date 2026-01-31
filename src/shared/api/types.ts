@@ -1,8 +1,6 @@
 // Расширенные типы для Article и Project
 // Эти типы дополняют сгенерированные типы недостающими полями
 
-import type { Article as GeneratedArticle, Project as GeneratedProject } from './generated';
-
 // Тип для автора
 export interface Author {
   id?: string | number;
@@ -15,10 +13,16 @@ export interface Author {
   };
 }
 
-// Расширенный тип Article с дополнительными полями
-export interface Article extends Omit<GeneratedArticle, 'authors'> {
+// Базовый тип Article из API
+export interface Article {
+  id?: string | number;
+  documentId?: string;
+  name?: string;
   title?: string;
+  description?: string;
   content?: string;
+  date?: string;
+  slug?: string;
   cover?: {
     id?: string | number;
     name?: string;
@@ -27,12 +31,20 @@ export interface Article extends Omit<GeneratedArticle, 'authors'> {
     formats?: any;
   };
   authors?: Author[];
+  createdAt?: string;
+  updatedAt?: string;
+  publishedAt?: string;
 }
 
-// Расширенный тип Project с дополнительными полями
-export interface Project extends GeneratedProject {
+// Базовый тип Project из API
+export interface Project {
+  id?: string | number;
+  documentId?: string;
+  name?: string;
   title?: string;
+  description?: string;
   content?: string;
+  slug?: string;
   cover?: {
     id?: string | number;
     name?: string;
@@ -40,9 +52,18 @@ export interface Project extends GeneratedProject {
     alternativeText?: string;
     formats?: any;
   };
+  logo?: {
+    id?: string | number;
+    name?: string;
+    url?: string;
+    alternativeText?: string;
+  };
   technologies?: string[];
   github_url?: string;
   live_url?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  publishedAt?: string;
 }
 
 // Типы для ответов API

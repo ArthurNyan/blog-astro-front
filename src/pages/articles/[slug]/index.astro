@@ -5,20 +5,19 @@ import type { Article } from "@/shared/api/types";
 
 export const getStaticPaths = async () => {
     const response = await getArticles({ populate: '*' });
-    const articles = (response.data || []) as Article[];
+    const articles = (response.data?.data || []) as Article[];
 
     return articles.map((article) => ({
         params: { slug: article.slug || '' },
-        props: { articleId: article.id },
+        props: { articleId: article.documentId },
     }));
 };
 
-const { slug } = Astro.params;
 const { articleId } = Astro.props;
 
 // Получаем полные данные статьи
-const articleResponse = await getArticleById(articleId as number);
-const article = articleResponse.data as Article | undefined;
+const articleResponse = await getArticleById(articleId as string);
+const article = articleResponse.data?.data as Article | undefined;
 ---
 
 <MainLayout

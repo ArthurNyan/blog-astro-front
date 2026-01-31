@@ -5,20 +5,19 @@ import type { Project } from "@/shared/api/types";
 
 export const getStaticPaths = async () => {
     const response = await ProjectService.getProjects({ populate: '*' });
-    const projects = (response.data || []) as Project[];
+    const projects = (response.data?.data || []) as Project[];
 
     return projects.map((project) => ({
         params: { slug: project.slug || '' },
-        props: { projectId: project.id },
+        props: { projectId: project.documentId },
     }));
 };
 
-const { slug } = Astro.params;
 const { projectId } = Astro.props;
 
 // Получаем полные данные проекта
-const projectResponse = await ProjectService.getProjectsId({ id: projectId as number });
-const project = projectResponse.data as Project | undefined;
+const projectResponse = await ProjectService.getProjectById(projectId as string);
+const project = projectResponse.data?.data as Project | undefined;
 ---
 
 <MainLayout
