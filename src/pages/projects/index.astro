@@ -1,0 +1,18 @@
+---
+import MainLayout from "@/layouts/main.astro";
+import { getProjects } from "@/shared/api/generated";
+
+const { data: projects } = await getProjects();
+---
+
+<MainLayout
+	content={{ title: "Astro + TailwindCSS" }}
+	className="flex flex-col gap-32"
+>
+	<h1>Projects</h1>
+	{
+		projects?.data?.map((project) => (
+			<a href={`/projects/${project.slug}`}>{project.name}</a>
+		))
+	}
+</MainLayout>
