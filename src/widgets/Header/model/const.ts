@@ -55,7 +55,11 @@ export const DEFAULT_NAVIGATION: NavigationItem[] = [
 		},
 	},
 	{
-		label: 'Documentation',
-		href: '/docs',
+		label: 'Blog',
+		href: '/articles',
+	},
+	{
+		label: 'Cases',
+		href: '/projects',
 	},
 ];

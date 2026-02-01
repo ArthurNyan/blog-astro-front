@@ -1,0 +1,31 @@
+---
+import MainLayout from "@/layouts/main.astro";
+import { getProjects, getProjectsId } from "@/shared/api/generated";
+
+export const getStaticPaths = async () => {
+    const response = await getProjects();
+    if (!response.data) {
+        return [];
+    }
+    return response.data.data?.map((project) => ({
+        params: { slug: project.slug },
+        props: {
+            documentId: project.documentId,
+        },
+    }));
+};
+
+const { documentId } = Astro.props;
+const { data: project } = await getProjectsId({
+    path: {
+        id: documentId as unknown as number,
+    },
+});
+
+---
+
+<MainLayout content={{ title: "Article" }} className="flex flex-col gap-32">
+    <h1>{project?.data?.name}</h1>
+    <p>{project?.data?.description}</p>
+    <img src={project?.data?.logo?.url} alt={project?.data?.name} />
+</MainLayout>

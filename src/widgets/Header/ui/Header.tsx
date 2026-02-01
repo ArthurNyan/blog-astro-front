@@ -54,7 +54,7 @@ export const Header = ({ navigationItems }: HeaderProps) => {
 					},
 				)}
 			>
-				<h4 className="text-xl font-bold">Logo</h4>
+				<a className="text-xl font-bold" href='/'>Logo</a>
 
 				<div className="hidden items-center gap-2 md:flex">
 					<DesktopNav items={navigation} />
