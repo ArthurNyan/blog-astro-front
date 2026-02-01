@@ -24,9 +24,10 @@ export type ArticleRequest = {
     data: {
         name: string;
         description: string;
+        slug: string;
         date?: string;
         authors?: Array<number | string>;
-        slug: string;
+        cover: number | string;
         locale?: string;
         localizations?: Array<number | string>;
     };
@@ -49,6 +50,7 @@ export type Article = {
     documentId?: string;
     name: string;
     description: string;
+    slug: string;
     date?: string;
     authors?: Array<{
         id?: string | number;
@@ -58,53 +60,159 @@ export type Article = {
             documentId?: string;
             name?: string;
             description?: string;
+            slug?: string;
             date?: string;
             authors?: Array<{
                 id?: string | number;
                 documentId?: string;
             }>;
-            slug?: string;
-            createdAt?: string;
-            updatedAt?: string;
-            publishedAt?: string;
-            createdBy?: {
+            cover?: {
                 id?: string | number;
                 documentId?: string;
-                firstname?: string;
-                lastname?: string;
-                username?: string;
-                email?: string;
-                resetPasswordToken?: string;
-                registrationToken?: string;
-                isActive?: boolean;
-                roles?: Array<{
+                name?: string;
+                alternativeText?: string;
+                caption?: string;
+                width?: number;
+                height?: number;
+                formats?: unknown;
+                hash?: string;
+                ext?: string;
+                mime?: string;
+                size?: number;
+                url?: string;
+                previewUrl?: string;
+                provider?: string;
+                provider_metadata?: unknown;
+                related?: Array<{
+                    id?: string | number;
+                    documentId?: string;
+                }>;
+                folder?: {
                     id?: string | number;
                     documentId?: string;
                     name?: string;
-                    code?: string;
-                    description?: string;
-                    users?: Array<{
+                    pathId?: number;
+                    parent?: {
+                        id?: string | number;
+                        documentId?: string;
+                    };
+                    children?: Array<{
                         id?: string | number;
                         documentId?: string;
                     }>;
-                    permissions?: Array<{
+                    files?: Array<{
                         id?: string | number;
                         documentId?: string;
-                        action?: string;
-                        actionParameters?: unknown;
-                        subject?: string;
-                        properties?: unknown;
-                        conditions?: unknown;
-                        role?: {
+                        name?: string;
+                        alternativeText?: string;
+                        caption?: string;
+                        width?: number;
+                        height?: number;
+                        formats?: unknown;
+                        hash?: string;
+                        ext?: string;
+                        mime?: string;
+                        size?: number;
+                        url?: string;
+                        previewUrl?: string;
+                        provider?: string;
+                        provider_metadata?: unknown;
+                        related?: Array<{
+                            id?: string | number;
+                            documentId?: string;
+                        }>;
+                        folder?: {
                             id?: string | number;
                             documentId?: string;
                         };
+                        folderPath?: string;
                         createdAt?: string;
                         updatedAt?: string;
                         publishedAt?: string;
                         createdBy?: {
                             id?: string | number;
                             documentId?: string;
+                            firstname?: string;
+                            lastname?: string;
+                            username?: string;
+                            email?: string;
+                            resetPasswordToken?: string;
+                            registrationToken?: string;
+                            isActive?: boolean;
+                            roles?: Array<{
+                                id?: string | number;
+                                documentId?: string;
+                                name?: string;
+                                code?: string;
+                                description?: string;
+                                users?: Array<{
+                                    id?: string | number;
+                                    documentId?: string;
+                                }>;
+                                permissions?: Array<{
+                                    id?: string | number;
+                                    documentId?: string;
+                                    action?: string;
+                                    actionParameters?: unknown;
+                                    subject?: string;
+                                    properties?: unknown;
+                                    conditions?: unknown;
+                                    role?: {
+                                        id?: string | number;
+                                        documentId?: string;
+                                    };
+                                    createdAt?: string;
+                                    updatedAt?: string;
+                                    publishedAt?: string;
+                                    createdBy?: {
+                                        id?: string | number;
+                                        documentId?: string;
+                                    };
+                                    updatedBy?: {
+                                        id?: string | number;
+                                        documentId?: string;
+                                    };
+                                    locale?: string;
+                                    localizations?: Array<{
+                                        id?: string | number;
+                                        documentId?: string;
+                                    }>;
+                                }>;
+                                createdAt?: string;
+                                updatedAt?: string;
+                                publishedAt?: string;
+                                createdBy?: {
+                                    id?: string | number;
+                                    documentId?: string;
+                                };
+                                updatedBy?: {
+                                    id?: string | number;
+                                    documentId?: string;
+                                };
+                                locale?: string;
+                                localizations?: Array<{
+                                    id?: string | number;
+                                    documentId?: string;
+                                }>;
+                            }>;
+                            blocked?: boolean;
+                            preferedLanguage?: string;
+                            createdAt?: string;
+                            updatedAt?: string;
+                            publishedAt?: string;
+                            createdBy?: {
+                                id?: string | number;
+                                documentId?: string;
+                            };
+                            updatedBy?: {
+                                id?: string | number;
+                                documentId?: string;
+                            };
+                            locale?: string;
+                            localizations?: Array<{
+                                id?: string | number;
+                                documentId?: string;
+                            }>;
                         };
                         updatedBy?: {
                             id?: string | number;
@@ -116,6 +224,7 @@ export type Article = {
                             documentId?: string;
                         }>;
                     }>;
+                    path?: string;
                     createdAt?: string;
                     updatedAt?: string;
                     publishedAt?: string;
@@ -132,9 +241,8 @@ export type Article = {
                         id?: string | number;
                         documentId?: string;
                     }>;
-                }>;
-                blocked?: boolean;
-                preferedLanguage?: string;
+                };
+                folderPath?: string;
                 createdAt?: string;
                 updatedAt?: string;
                 publishedAt?: string;
@@ -151,6 +259,13 @@ export type Article = {
                     id?: string | number;
                     documentId?: string;
                 }>;
+            };
+            createdAt?: string;
+            updatedAt?: string;
+            publishedAt?: string;
+            createdBy?: {
+                id?: string | number;
+                documentId?: string;
             };
             updatedBy?: {
                 id?: string | number;
@@ -181,7 +296,49 @@ export type Article = {
             documentId?: string;
         }>;
     }>;
-    slug: string;
+    cover: {
+        id?: string | number;
+        documentId?: string;
+        name?: string;
+        alternativeText?: string;
+        caption?: string;
+        width?: number;
+        height?: number;
+        formats?: unknown;
+        hash?: string;
+        ext?: string;
+        mime?: string;
+        size?: number;
+        url?: string;
+        previewUrl?: string;
+        provider?: string;
+        provider_metadata?: unknown;
+        related?: Array<{
+            id?: string | number;
+            documentId?: string;
+        }>;
+        folder?: {
+            id?: string | number;
+            documentId?: string;
+        };
+        folderPath?: string;
+        createdAt?: string;
+        updatedAt?: string;
+        publishedAt?: string;
+        createdBy?: {
+            id?: string | number;
+            documentId?: string;
+        };
+        updatedBy?: {
+            id?: string | number;
+            documentId?: string;
+        };
+        locale?: string;
+        localizations?: Array<{
+            id?: string | number;
+            documentId?: string;
+        }>;
+    };
     createdAt?: string;
     updatedAt?: string;
     publishedAt?: string;
@@ -237,6 +394,7 @@ export type Author = {
         documentId?: string;
         name?: string;
         description?: string;
+        slug?: string;
         date?: string;
         authors?: Array<{
             id?: string | number;
@@ -345,7 +503,119 @@ export type Author = {
                 documentId?: string;
             }>;
         }>;
-        slug?: string;
+        cover?: {
+            id?: string | number;
+            documentId?: string;
+            name?: string;
+            alternativeText?: string;
+            caption?: string;
+            width?: number;
+            height?: number;
+            formats?: unknown;
+            hash?: string;
+            ext?: string;
+            mime?: string;
+            size?: number;
+            url?: string;
+            previewUrl?: string;
+            provider?: string;
+            provider_metadata?: unknown;
+            related?: Array<{
+                id?: string | number;
+                documentId?: string;
+            }>;
+            folder?: {
+                id?: string | number;
+                documentId?: string;
+                name?: string;
+                pathId?: number;
+                parent?: {
+                    id?: string | number;
+                    documentId?: string;
+                };
+                children?: Array<{
+                    id?: string | number;
+                    documentId?: string;
+                }>;
+                files?: Array<{
+                    id?: string | number;
+                    documentId?: string;
+                    name?: string;
+                    alternativeText?: string;
+                    caption?: string;
+                    width?: number;
+                    height?: number;
+                    formats?: unknown;
+                    hash?: string;
+                    ext?: string;
+                    mime?: string;
+                    size?: number;
+                    url?: string;
+                    previewUrl?: string;
+                    provider?: string;
+                    provider_metadata?: unknown;
+                    related?: Array<{
+                        id?: string | number;
+                        documentId?: string;
+                    }>;
+                    folder?: {
+                        id?: string | number;
+                        documentId?: string;
+                    };
+                    folderPath?: string;
+                    createdAt?: string;
+                    updatedAt?: string;
+                    publishedAt?: string;
+                    createdBy?: {
+                        id?: string | number;
+                        documentId?: string;
+                    };
+                    updatedBy?: {
+                        id?: string | number;
+                        documentId?: string;
+                    };
+                    locale?: string;
+                    localizations?: Array<{
+                        id?: string | number;
+                        documentId?: string;
+                    }>;
+                }>;
+                path?: string;
+                createdAt?: string;
+                updatedAt?: string;
+                publishedAt?: string;
+                createdBy?: {
+                    id?: string | number;
+                    documentId?: string;
+                };
+                updatedBy?: {
+                    id?: string | number;
+                    documentId?: string;
+                };
+                locale?: string;
+                localizations?: Array<{
+                    id?: string | number;
+                    documentId?: string;
+                }>;
+            };
+            folderPath?: string;
+            createdAt?: string;
+            updatedAt?: string;
+            publishedAt?: string;
+            createdBy?: {
+                id?: string | number;
+                documentId?: string;
+            };
+            updatedBy?: {
+                id?: string | number;
+                documentId?: string;
+            };
+            locale?: string;
+            localizations?: Array<{
+                id?: string | number;
+                documentId?: string;
+            }>;
+        };
         createdAt?: string;
         updatedAt?: string;
         publishedAt?: string;
@@ -851,8 +1121,10 @@ export type ProjectRequest = {
     data: {
         name: string;
         description: string;
-        logo?: number | string;
         slug: string;
+        cover: number | string;
+        date?: string;
+        logo?: number | string;
         locale?: string;
         localizations?: Array<number | string>;
     };
@@ -875,7 +1147,8 @@ export type Project = {
     documentId?: string;
     name: string;
     description: string;
-    logo?: {
+    slug: string;
+    cover: {
         id?: string | number;
         documentId?: string;
         name?: string;
@@ -1069,7 +1342,50 @@ export type Project = {
             documentId?: string;
         }>;
     };
-    slug: string;
+    date?: string;
+    logo?: {
+        id?: string | number;
+        documentId?: string;
+        name?: string;
+        alternativeText?: string;
+        caption?: string;
+        width?: number;
+        height?: number;
+        formats?: unknown;
+        hash?: string;
+        ext?: string;
+        mime?: string;
+        size?: number;
+        url?: string;
+        previewUrl?: string;
+        provider?: string;
+        provider_metadata?: unknown;
+        related?: Array<{
+            id?: string | number;
+            documentId?: string;
+        }>;
+        folder?: {
+            id?: string | number;
+            documentId?: string;
+        };
+        folderPath?: string;
+        createdAt?: string;
+        updatedAt?: string;
+        publishedAt?: string;
+        createdBy?: {
+            id?: string | number;
+            documentId?: string;
+        };
+        updatedBy?: {
+            id?: string | number;
+            documentId?: string;
+        };
+        locale?: string;
+        localizations?: Array<{
+            id?: string | number;
+            documentId?: string;
+        }>;
+    };
     createdAt?: string;
     updatedAt?: string;
     publishedAt?: string;
@@ -1087,6 +1403,51 @@ export type Project = {
         documentId?: string;
         name?: string;
         description?: string;
+        slug?: string;
+        cover?: {
+            id?: string | number;
+            documentId?: string;
+            name?: string;
+            alternativeText?: string;
+            caption?: string;
+            width?: number;
+            height?: number;
+            formats?: unknown;
+            hash?: string;
+            ext?: string;
+            mime?: string;
+            size?: number;
+            url?: string;
+            previewUrl?: string;
+            provider?: string;
+            provider_metadata?: unknown;
+            related?: Array<{
+                id?: string | number;
+                documentId?: string;
+            }>;
+            folder?: {
+                id?: string | number;
+                documentId?: string;
+            };
+            folderPath?: string;
+            createdAt?: string;
+            updatedAt?: string;
+            publishedAt?: string;
+            createdBy?: {
+                id?: string | number;
+                documentId?: string;
+            };
+            updatedBy?: {
+                id?: string | number;
+                documentId?: string;
+            };
+            locale?: string;
+            localizations?: Array<{
+                id?: string | number;
+                documentId?: string;
+            }>;
+        };
+        date?: string;
         logo?: {
             id?: string | number;
             documentId?: string;
@@ -1130,7 +1491,6 @@ export type Project = {
                 documentId?: string;
             }>;
         };
-        slug?: string;
         createdAt?: string;
         updatedAt?: string;
         publishedAt?: string;
