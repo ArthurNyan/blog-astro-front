@@ -28,6 +28,7 @@ export type ArticleRequest = {
         date?: string;
         authors?: Array<number | string>;
         cover: number | string;
+        content?: string;
         locale?: string;
         localizations?: Array<number | string>;
     };
@@ -260,6 +261,7 @@ export type Article = {
                     documentId?: string;
                 }>;
             };
+            content?: string;
             createdAt?: string;
             updatedAt?: string;
             publishedAt?: string;
@@ -339,6 +341,7 @@ export type Article = {
             documentId?: string;
         }>;
     };
+    content?: string;
     createdAt?: string;
     updatedAt?: string;
     publishedAt?: string;
@@ -616,6 +619,7 @@ export type Author = {
                 documentId?: string;
             }>;
         };
+        content?: string;
         createdAt?: string;
         updatedAt?: string;
         publishedAt?: string;
@@ -1125,6 +1129,7 @@ export type ProjectRequest = {
         cover: number | string;
         date?: string;
         logo?: number | string;
+        content?: string;
         locale?: string;
         localizations?: Array<number | string>;
     };
@@ -1386,6 +1391,7 @@ export type Project = {
             documentId?: string;
         }>;
     };
+    content?: string;
     createdAt?: string;
     updatedAt?: string;
     publishedAt?: string;
@@ -1491,6 +1497,7 @@ export type Project = {
                 documentId?: string;
             }>;
         };
+        content?: string;
         createdAt?: string;
         updatedAt?: string;
         publishedAt?: string;

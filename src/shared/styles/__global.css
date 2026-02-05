@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "./markdown.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -127,6 +128,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   background-color: var(--background);
+  word-break: break-word;
 }
 
 html, body {

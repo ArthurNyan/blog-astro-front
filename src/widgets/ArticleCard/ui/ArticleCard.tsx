@@ -1,11 +1,9 @@
-import { Badge } from "@/shared/components/ui/badge";
 import {
 	Card,
 	CardImage,
 	CardHeader,
 	CardTitle,
 	CardDescription,
-	CardFooter,
 } from "@/shared/components/ui/card";
 import type { Article } from "@/shared/api/generated/types.gen";
 
@@ -15,12 +13,14 @@ interface ArticleCardProps {
 }
 
 export const ArticleCard = ({ article, baseUrl = "http://localhost:1337" }: ArticleCardProps) => {
-	const coverUrl = article.cover?.url ? `${baseUrl}${article.cover.url}` : "/placeholder-image.svg";
-	const formattedDate = article.date ? new Date(article.date).toLocaleDateString("ru-RU", {
-		year: "numeric",
-		month: "long",
-		day: "numeric",
-	}) : null;
+	// TODO: fix this
+	// @ts-ignore 
+	const coverUrl = article.cover.formats ? `${baseUrl}${article.cover.formats?.small?.url}` : "/placeholder-image.svg";
+	// const formattedDate = article.date ? new Date(article.date).toLocaleDateString("ru-RU", {
+	// 	year: "numeric",
+	// 	month: "long",
+	// 	day: "numeric",
+	// }) : null;
 
 	return (
 		<a href={`/articles/${article.slug}`} className="block group h-full">
